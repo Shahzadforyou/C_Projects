@@ -23,8 +23,8 @@ void display_student(const vector <Student> & student){
         cout<<"Name is "<<s.name<<endl<<"Roll number is "<<s.rollno<<"CGPA is "<<s.cgpa<<endl;
     }
 };
-void student_seatch(const vector <Student>& student){
-    int Rollno:
+void search_Student(const vector <Student>& student){
+    int Rollno;
     cout<<"Enter the Roll number of Student"<<endl;
     cin>>Rollno;
     for(const auto& s: student){
@@ -37,8 +37,25 @@ void student_seatch(const vector <Student>& student){
         
     }
 };
+
 int main(){
     vector <Student> student;
-
+    int choice;
+    do
+    {
+        cout<<"/n -----Student Record form -----/n";
+        cout<<"1. Add student /n 2. Display all students /n 3. Search a Student /n";
+        cout<<"Enter the option /n";
+        cin>>choice;
+        switch (choice)
+        {
+        case 1 : add_Student(student); break;
+        case 2 : display_student(student); break;
+        case 3 : search_Student(student); break;
+        case 4 : cout<<"Exiting Progam .../n"; break;
+        default : cout<<"Enter valid expression /n";break;
+        }
+    } while (choice != 4);
+    
     return 0;
 }
