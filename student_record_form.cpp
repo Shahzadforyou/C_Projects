@@ -20,7 +20,7 @@ void add_Student(vector <Student>&student){
 void display_student(const vector <Student> & student){
     cout<<"Student Records"<<endl;
     for(const auto& s : student){
-        cout<<"Name is "<<s.name<<endl<<"Roll number is "<<s.rollno<<"CGPA is "<<s.cgpa<<endl;
+        cout<<"Name is "<<s.name<<endl<<"Roll number is "<<s.rollno<<endl<<"CGPA is "<<s.cgpa<<endl;
     }
 };
 void search_Student(const vector <Student>& student){
@@ -43,17 +43,17 @@ int main(){
     int choice;
     do
     {
-        cout<<"/n -----Student Record form -----/n";
-        cout<<"1. Add student /n 2. Display all students /n 3. Search a Student /n";
-        cout<<"Enter the option /n";
+        cout<<endl<<" -----Student Record form -----"<<endl;
+        cout<<"1. Add student " <<endl<<"2. Display all students" <<endl <<"3. Search a Student "<<endl;
+        cout<<"Enter the option "<<endl;
         cin>>choice;
         switch (choice)
         {
         case 1 : add_Student(student); break;
         case 2 : display_student(student); break;
         case 3 : search_Student(student); break;
-        case 4 : cout<<"Exiting Progam .../n"; break;
-        default : cout<<"Enter valid expression /n";break;
+        case 4 : cout<<"Exiting Progam ..."<<endl; break;
+        default : cout<<"Enter valid expression "<<endl;break;
         }
     } while (choice != 4);
     
