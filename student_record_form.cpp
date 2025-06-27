@@ -23,6 +23,20 @@ void display_student(const vector <Student> & student){
         cout<<"Name is "<<s.name<<endl<<"Roll number is "<<s.rollno<<"CGPA is "<<s.cgpa<<endl;
     }
 };
+void student_seatch(const vector <Student>& student){
+    int Rollno:
+    cout<<"Enter the Roll number of Student"<<endl;
+    cin>>Rollno;
+    for(const auto& s: student){
+        if (s.rollno == Rollno)
+        {
+            cout<<"Student Name is "<<s.name<<endl<<"Student Roll number is "<<s.rollno<<endl<<"Student CGPA is "<<s.cgpa<<endl;
+        }else{
+            cout<<"Student does not exist in data base"<<endl;
+        }
+        
+    }
+};
 int main(){
     vector <Student> student;
 
