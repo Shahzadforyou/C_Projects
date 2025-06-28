@@ -1,21 +1,40 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<fstream>
 using namespace std;
 struct Student{
     string name;
     int rollno;
     float cgpa;
 };
+void save_Student_to_file(const Student& s){
+const string fil = "student.txt";
+
+    ofstream out(fil,ios::app);
+    if (!out)
+    {
+        cout<<" Cannot open file for writing!"<<endl;
+        return ;
+    }
+    out<<s.name<< ","<<s.rollno<< ","<<s.cgpa<<endl;
+    out.close();
+
+    
+}
 void add_Student(vector <Student>&student){
     Student s;
     cout<<"Enter the name of student"<<endl;
-    cin>>s.name;
+    cin.ignore();
+    getline(cin,s.name);
     cout<<"Enter the roll number of student"<<endl;
     cin>>s.rollno;
+    cin.ignore();
     cout<<"Enter the cgpa of student"<<endl;
     cin>>s.cgpa;
     student.push_back(s);
+    cout << "Student added & written to file!"<<endl;
+    save_Student_to_file(s);
 }
 void display_student(const vector <Student> & student){
     cout<<"Student Records"<<endl;
@@ -31,8 +50,9 @@ void search_Student(const vector <Student>& student){
         if (s.rollno == Rollno)
         {
             cout<<"Student Name is "<<s.name<<endl<<"Student Roll number is "<<s.rollno<<endl<<"Student CGPA is "<<s.cgpa<<endl;
+            return;
         }else{
-            cout<<"Student does not exist in data base"<<endl;
+                cout << " Student not found."<<endl;
         }
         
     }
