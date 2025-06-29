@@ -8,10 +8,11 @@ struct Student{
     int rollno;
     float cgpa;
 };
-void save_Student_to_file(const Student& s){
-const string fil = "student.txt";
+const string data_file = "student.txt";
 
-    ofstream out(fil,ios::app);
+void save_Student_to_file(const Student& s){
+
+    ofstream out(data_file,ios::app);
     if (!out)
     {
         cout<<" Cannot open file for writing!"<<endl;
@@ -22,7 +23,26 @@ const string fil = "student.txt";
 
     
 }
-void add_Student(vector <Student>&student){
+void data_from_file(vector <Student>& students){
+    ifstream in(data_file,ios::app);
+    if (!in) return;
+    string line;
+    while (getline(in,line))
+    {
+        size_t p1 = line.find(',');
+        size_t p2 = line.rfind(',');
+        if (p1 == string::npos || p2 == string :: npos || p1 == p2)
+        continue;
+        Student s;
+        s.name = line.substr(0,p1);
+        s.rollno = stoi(line.substr(p1+1,p2-p1-1));
+        s.cgpa = stof(line.substr(p2+1));
+        students.push_back(s);
+    }
+    
+    
+}
+void add_Student(vector <Student>& student){
     Student s;
     cout<<"Enter the name of student"<<endl;
     cin.ignore();
